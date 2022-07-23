@@ -7,13 +7,17 @@ import (
 	"sort"
 )
 
-func selectSort(nums []int) {
+func bubbleSort(nums []int) {
 	for i := 0; i < len(nums); i++ {
-		min_idx := i
-		for j := i + 1; j < len(nums); j++ {
-			if nums[min_idx] > nums[j] {
-				nums[j], nums[min_idx] = nums[min_idx], nums[j]
+		is_sorted := true
+		for j := 1; j < len(nums)-i; j++ {
+			if nums[j] < nums[j-1] {
+				is_sorted = false
+				nums[j], nums[j-1] = nums[j-1], nums[j]
 			}
+		}
+		if is_sorted {
+			return
 		}
 	}
 }
@@ -27,6 +31,6 @@ func main() {
 	_ = copy(lst2, lst)
 	sort.Ints(lst)
 	fmt.Println(reflect.DeepEqual(lst, lst2))
-	selectSort(lst2)
+	bubbleSort(lst2)
 	fmt.Println(reflect.DeepEqual(lst, lst2))
 }
