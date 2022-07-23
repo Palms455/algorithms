@@ -2,19 +2,19 @@ package main
 
 func lengthOfLongestSubstring(s string) int {
 	var length, left int
-	state := map[string]bool{}
+	state := map[int32]bool{}
 	for idx, elem := range s {
-		inner:
+	inner:
 		for {
-			ok := state[string(elem)]
-			if ok{
-				delete(state, string(s[left]))
+			ok := state[elem]
+			if ok {
+				delete(state, int32(s[left]))
 				left++
 				continue
 			}
 			break inner
 		}
-		state[string(elem)] = true
+		state[elem] = true
 		if length < idx-left+1 {
 			length = idx - left + 1
 		}
