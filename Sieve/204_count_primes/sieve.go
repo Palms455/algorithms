@@ -1,4 +1,4 @@
-package main
+package sieve
 
 func countPrimes(n int) int {
 	var cnt int
